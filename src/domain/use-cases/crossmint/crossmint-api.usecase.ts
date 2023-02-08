@@ -1,33 +1,39 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import config from '../../../config';
 import { Polyanet } from '../../entities/polyanet.entity';
 import { ICrossmintApi } from '../../interfaces/use-cases/crossmint/crossmint-api.usecase';
 
 export default class CrossmintApi implements ICrossmintApi {
-  async post(url: string, data: Polyanet): Promise<any> {
+  baseUrl: string
+  constructor(crossmintBaseUrl: string) {
+    this.baseUrl = crossmintBaseUrl
+  }
+
+  async post(url: string, data: Polyanet): Promise<AxiosResponse> {
     try {
-      const response = await axios.post(`${config.CROSSMINT_API_URL_BASE}${url}`,
-        data, {
-        params: {
-          candidateId: config.CANDIDATE_ID
+      return await axios.post(`${this.baseUrl}${url}`, {
+        ...data,
+        candidateId: config.CANDIDATE_ID,
+      },
+        {
+          headers: { "content-type": "application/json" }
         }
-      });
-      return response.data;
+      );
     } catch (error) {
       console.error(error);
       throw error;
     }
   }
 
-  async delete(url: string, data: Polyanet): Promise<any> {
+  async delete(url: string, data: Polyanet): Promise<AxiosResponse> {
     try {
-      const response = await axios.delete(`${config.CROSSMINT_API_URL_BASE}${url}`, {
-        data,
-        params: {
-          candidateId: config.CANDIDATE_ID
+      return await axios.delete(`${this.baseUrl}${url}`, {
+        headers: { "content-type": "application/json" },
+        data: {
+          ...data,
+          candidateId: config.CANDIDATE_ID,
         }
       });
-      return response.data;
     } catch (error) {
       console.error(error);
       throw error;

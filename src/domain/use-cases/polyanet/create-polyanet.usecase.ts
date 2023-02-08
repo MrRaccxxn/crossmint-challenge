@@ -6,6 +6,6 @@ export class CreatePolyanet implements CreatePolyanetUseCase {
     constructor(private crossmintApi: ICrossmintApi) { }
 
     async execute(url: string, polyanet: Polyanet) {
-        await this.crossmintApi.post(url, polyanet)
+        return await this.crossmintApi.post(url, polyanet)
     }
 }
