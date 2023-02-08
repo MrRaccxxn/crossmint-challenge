@@ -9,7 +9,7 @@ export default class CrossmintApi implements ICrossmintApi {
     this.baseUrl = crossmintBaseUrl
   }
 
-  async post(url: string, data: Polyanet): Promise<AxiosResponse> {
+  async post(url: string, data: Polyanet): Promise<void> {
     try {
       return await axios.post(`${this.baseUrl}${url}`, {
         ...data,
@@ -25,7 +25,7 @@ export default class CrossmintApi implements ICrossmintApi {
     }
   }
 
-  async delete(url: string, data: Polyanet): Promise<AxiosResponse> {
+  async delete(url: string, data: Polyanet): Promise<void> {
     try {
       return await axios.delete(`${this.baseUrl}${url}`, {
         headers: { "content-type": "application/json" },

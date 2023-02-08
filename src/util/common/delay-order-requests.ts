@@ -1,6 +1,4 @@
-import { AxiosResponse } from "axios";
-
-export const makeRequest = async (promises: Array<() => Promise<AxiosResponse>>, delay = 2000): Promise<void> => {
+export const makeRequest = async (promises: Array<() => Promise<void>>, delay = 2000): Promise<void> => {
     for (const promise of promises) {
         try {
             await promise();
