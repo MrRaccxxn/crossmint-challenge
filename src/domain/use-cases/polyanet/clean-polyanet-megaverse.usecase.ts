@@ -12,9 +12,9 @@ export class CleanPolyanetMegaverse implements CleanPolyanetMegaverseUseCase {
         const START_CLEAN_FROM = 2;
         let promises: Array<() => Promise<void>> = [];
 
-        for (let index = START_CLEAN_FROM; index < parseInt(config.MEGAVERSE_MATRIX_SIZE) - START_CLEAN_FROM; index++) {
+        for (let index = START_CLEAN_FROM; index < parseInt(config.MEGAVERSE_MATRIX_SIZE_CHALLENGE_1) - START_CLEAN_FROM; index++) {
             promises.push(() => this.crossmintApi.delete(url, { row: index, column: index }));
-            promises.push(() => this.crossmintApi.delete(url, { row: index, column: parseInt(config.MEGAVERSE_MATRIX_SIZE) - 1 - index }));
+            promises.push(() => this.crossmintApi.delete(url, { row: index, column: parseInt(config.MEGAVERSE_MATRIX_SIZE_CHALLENGE_1) - 1 - index }));
         }
 
         return makeRequest(promises, 500);

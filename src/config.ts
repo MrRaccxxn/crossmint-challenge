@@ -7,14 +7,14 @@ interface ENV {
     PORT: number | undefined;
     CROSSMINT_API_URL_BASE: string | undefined;
     CANDIDATE_ID: string | undefined;
-    MEGAVERSE_MATRIX_SIZE: string | undefined;
+    MEGAVERSE_MATRIX_SIZE_CHALLENGE_1: string | undefined;
 }
 
 interface Config {
     PORT: number;
     CROSSMINT_API_URL_BASE: string;
     CANDIDATE_ID: string;
-    MEGAVERSE_MATRIX_SIZE: string;
+    MEGAVERSE_MATRIX_SIZE_CHALLENGE_1: string;
 }
 
 const getConfig = (): ENV => {
@@ -22,7 +22,7 @@ const getConfig = (): ENV => {
         PORT: process.env.PORT ? Number(process.env.PORT) : undefined,
         CROSSMINT_API_URL_BASE: process.env.CROSSMINT_API_URL_BASE,
         CANDIDATE_ID: process.env.CANDIDATE_ID,
-        MEGAVERSE_MATRIX_SIZE: process.env.MEGAVERSE_MATRIX_SIZE
+        MEGAVERSE_MATRIX_SIZE_CHALLENGE_1: process.env.MEGAVERSE_MATRIX_SIZE_CHALLENGE_1
     };
 };
 

@@ -1,3 +1,5 @@
 export enum CrossMintEndPoints {
-    polyanet = '/polyanets'
+    polyanets = '/polyanets',
+    soloons = '/soloons',
+    comeths = '/comeths',
 }

@@ -11,9 +11,9 @@ export class DrawXPolyanet implements DrawXPolyanetUseCase {
         const START_DRAW_FROM = 2;
         let promises: Array<() => Promise<void>> = [];
 
-        for (let index = START_DRAW_FROM; index < parseInt(config.MEGAVERSE_MATRIX_SIZE) - START_DRAW_FROM; index++) {
+        for (let index = START_DRAW_FROM; index < parseInt(config.MEGAVERSE_MATRIX_SIZE_CHALLENGE_1) - START_DRAW_FROM; index++) {
             promises.push(() => this.crossmintApi.post(url, { row: index, column: index }));
-            promises.push(() => this.crossmintApi.post(url, { row: index, column: parseInt(config.MEGAVERSE_MATRIX_SIZE) - 1 - index }));
+            promises.push(() => this.crossmintApi.post(url, { row: index, column: parseInt(config.MEGAVERSE_MATRIX_SIZE_CHALLENGE_1) - 1 - index }));
         }
 
         await makeRequest(promises, 500);

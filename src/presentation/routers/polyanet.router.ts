@@ -16,7 +16,7 @@ export default function PolyanetRouter(
 
     router.post('/', async (req: Request, res: Response) => {
         try {
-            await createPolyanetUseCase.execute(CrossMintEndPoints.polyanet, req.body)
+            await createPolyanetUseCase.execute(CrossMintEndPoints.polyanets, req.body)
             res.statusCode = 201
             res.json({ message: "Polyanet created" })
         } catch (err) {
@@ -26,7 +26,7 @@ export default function PolyanetRouter(
 
     router.delete('/', async (req: Request, res: Response) => {
         try {
-            await deletePolyanetUseCase.execute(CrossMintEndPoints.polyanet, req.body)
+            await deletePolyanetUseCase.execute(CrossMintEndPoints.polyanets, req.body)
             res.statusCode = 201
             res.json({ message: "Polyanet deleted" })
         } catch (err) {
@@ -36,7 +36,7 @@ export default function PolyanetRouter(
 
     router.post('/draw-x', async (req: Request, res: Response) => {
         try {
-            await drawXPolyanetUseCase.execute(CrossMintEndPoints.polyanet)
+            await drawXPolyanetUseCase.execute(CrossMintEndPoints.polyanets)
             res.statusCode = 201
             res.json({ message: "X mark drawed" })
         } catch (err) {
@@ -46,7 +46,7 @@ export default function PolyanetRouter(
 
     router.post('/clean', async (req: Request, res: Response) => {
         try {
-            await cleanPolyanetMegaverseUseCase.execute(CrossMintEndPoints.polyanet)
+            await cleanPolyanetMegaverseUseCase.execute(CrossMintEndPoints.polyanets)
             res.statusCode = 201
             res.json({ message: "Map cleaned" })
         } catch (err) {

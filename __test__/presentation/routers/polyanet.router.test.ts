@@ -45,7 +45,7 @@ describe("Polyanet Router", () => {
         mockDrawXPolyanetUseCase = new MockDrawXPolyanetUseCase()
 
         server.use(
-            CrossMintEndPoints.polyanet,
+            CrossMintEndPoints.polyanets,
             PolyanetRouter(
                 mockCreatePolyanetUseCase,
                 mockDeletePolyanetUseCase,
@@ -60,32 +60,32 @@ describe("Polyanet Router", () => {
 
     describe("POST /polyanet create", () => {
         test("POST /polyanet - success", async () => {
-            const InputData = { row: 1, column: 1 }
+            const InputData: Polyanet = { row: 1, column: 1 }
             jest.spyOn(mockCreatePolyanetUseCase, "execute").mockImplementation(() => Promise.resolve())
-            const response = await request(server).post(CrossMintEndPoints.polyanet).send(InputData)
+            const response = await request(server).post(CrossMintEndPoints.polyanets).send(InputData)
             expect(response.status).toBe(201)
         });
 
         test("POST /polyanet - returns 500 on use case error", async () => {
-            const InputData = { row: 1, column: 1 }
+            const InputData: Polyanet = { row: 1, column: 1 }
             jest.spyOn(mockCreatePolyanetUseCase, "execute").mockImplementation(() => Promise.reject(Error()))
-            const response = await request(server).post(CrossMintEndPoints.polyanet).send(InputData)
+            const response = await request(server).post(CrossMintEndPoints.polyanets).send(InputData)
             expect(response.status).toBe(500)
         });
     })
 
     describe("DELETE /polyanet delete", () => {
         test("DELETE /polyanet - success", async () => {
-            const InputData = { row: 1, column: 1 }
+            const InputData: Polyanet = { row: 1, column: 1 }
             jest.spyOn(mockDeletePolyanetUseCase, "execute").mockImplementation(() => Promise.resolve())
-            const response = await request(server).delete(CrossMintEndPoints.polyanet).send(InputData)
+            const response = await request(server).delete(CrossMintEndPoints.polyanets).send(InputData)
             expect(response.status).toBe(201)
         });
 
         test("DELETE /polyanet - returns 500 on use case error", async () => {
-            const InputData = { row: 1, column: 1 }
+            const InputData: Polyanet = { row: 1, column: 1 }
             jest.spyOn(mockDeletePolyanetUseCase, "execute").mockImplementation(() => Promise.reject(Error()))
-            const response = await request(server).delete(CrossMintEndPoints.polyanet).send(InputData)
+            const response = await request(server).delete(CrossMintEndPoints.polyanets).send(InputData)
             expect(response.status).toBe(500)
         });
     })
@@ -93,13 +93,13 @@ describe("Polyanet Router", () => {
     describe("DRAW X /polyanet post", () => {
         test("DRAW X /polyanet - success", async () => {
             jest.spyOn(mockDrawXPolyanetUseCase, "execute").mockImplementation(() => Promise.resolve())
-            const response = await request(server).post(`${CrossMintEndPoints.polyanet}/draw-x`)
+            const response = await request(server).post(`${CrossMintEndPoints.polyanets}/draw-x`)
             expect(response.status).toBe(201);
         });
 
         test("DRAW X /polyanet - returns 500 on use case error", async () => {
             jest.spyOn(mockDrawXPolyanetUseCase, "execute").mockImplementation(() => Promise.reject(Error()))
-            const response = await request(server).post(`${CrossMintEndPoints.polyanet}/draw-x`)
+            const response = await request(server).post(`${CrossMintEndPoints.polyanets}/draw-x`)
             expect(response.status).toBe(500)
         });
     })
@@ -107,15 +107,15 @@ describe("Polyanet Router", () => {
     describe("CLEAN /polyanet post", () => {
         test("CLEAN /polyanet - success", async () => {
             jest.spyOn(mockCleanPolyanetMegaverseUseCase, "execute").mockImplementation(() => Promise.resolve())
-            const response = await request(server).post(`${CrossMintEndPoints.polyanet}/clean`)
+            const response = await request(server).post(`${CrossMintEndPoints.polyanets}/clean`)
             expect(response.status).toBe(201)
         });
 
         test("CLEAN /polyanet - returns 500 on use case error", async () => {
             jest.spyOn(mockCleanPolyanetMegaverseUseCase, "execute").mockImplementation(() => Promise.reject(Error()))
-            const response = await request(server).post(`${CrossMintEndPoints.polyanet}/clean`)
+            const response = await request(server).post(`${CrossMintEndPoints.polyanets}/clean`)
             expect(response.status).toBe(500)
         });
     })
-  
+
 })
