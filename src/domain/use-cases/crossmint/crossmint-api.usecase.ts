@@ -9,6 +9,20 @@ export default class CrossmintApi implements ICrossmintApi {
     this.baseUrl = crossmintBaseUrl
   }
 
+  async get(url: string): Promise<AxiosResponse> {
+    try {
+      return await axios.get(`${this.baseUrl}${url}`, {
+        params: {
+          candidateId: config.CANDIDATE_ID,
+        }
+      }
+      );
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
   async post(url: string, data: Polyanet): Promise<void> {
     try {
       return await axios.post(`${this.baseUrl}${url}`, {
