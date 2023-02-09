@@ -4,8 +4,6 @@
 </div>
   <h1 align="center">Crossmint Challenge</h1>
 
-<details>
- 
 ## Endpoints
 
 | Method   | URL                                      | Description                                                      |
@@ -34,6 +32,10 @@ $ git clone https://github.com/MrRaccxxn/crossmint-challenge
 - Install dependencies: `npm i` OR `yarn`
 
 **Step #3**
+
+- Don't forget to set your env variables in a .env file (You can take the description from the `.env.example` file)
+
+**Step #4**
 
 - To start the server, run: `npm run dev` OR `yarn start`
 Open [http://localhost:8080](http://localhost:8080) with your browser to see the result.)
